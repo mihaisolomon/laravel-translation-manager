@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Routes group config
@@ -10,19 +9,19 @@ return [
     | The default group settings for the elFinder routes.
     |
     */
-    'route'          => [
-        'prefix'     => 'translations',
+    'route' => [
+        'prefix' => 'translations',
         'middleware' => 'auth',
     ],
 
-    /**
+    /*
      * Enable deletion of translations
      *
      * @type boolean
      */
     'delete_enabled' => true,
 
-    /**
+    /*
      * Exclude specific groups from Laravel Translation Manager.
      * This is useful if, for example, you want to avoid editing the official Laravel language files.
      *
@@ -51,12 +50,12 @@ return [
      *        'de',
      *    )
      */
-    'exclude_langs'  => [],
+    'exclude_langs' => [],
 
-    /**
+    /*
      * Export translations with keys output alphabetically.
      */
-    'sort_keys'     => false,
+    'sort_keys' => false,
 
     'trans_functions' => [
         'trans',
@@ -71,4 +70,29 @@ return [
         '$trans.get',
     ],
 
+    /*
+     * Enable pagination of translations
+     *
+     * @type boolean
+     */
+    'pagination_enabled' => false,
+
+    /*
+     * Define number of translations per page
+     *
+     * @type integer
+     */
+    'per_page' => 40,
+
+    /* ------------------------------------------------------------------------------------------------
+     | Set Views options
+     | --------------------------å----------------------------------------------------------------------
+     | Here you can set The "extends" blade of index.blade.php
+    */
+    'layout' => 'translation-manager::layout',
+
+    /*
+     * Choose which  template to use [bootstrap3, bootstrap4, bootstrap5, tailwind3 ]
+     */
+    'template' => 'tailwind3',
 ];
