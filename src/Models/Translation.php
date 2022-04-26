@@ -19,10 +19,20 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Translation extends Model
 {
+
     public const STATUS_SAVED = 0;
     public const STATUS_CHANGED = 1;
 
     protected $table = 'ltm_translations';
+
+    protected $connection = 'mysql';
+
+    public function __construct()
+    {
+        $this->connection = config('translation-manager.database.connection');
+        $this->table = config('translation-manager.database.table');
+    }
+
     protected $guarded = ['id', 'created_at', 'updated_at'];
 
     public function scopeOfTranslatedGroup($query, $group)

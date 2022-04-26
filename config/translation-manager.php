@@ -35,7 +35,12 @@ return [
      */
     'exclude_groups' => [],
 
-    /*
+    'database' => [
+        'table'         => env('TRANSLATION_TABLE_NAME', 'ltm_translations'),
+        'connection'    => env('TRANSLATION_CONNECTION', 'mysql'),
+    ],
+
+    /**
      * Exclude specific languages from Laravel Translation Manager.
      *
      * @type array
