@@ -265,11 +265,19 @@ class Manager
     public function missingKey($namespace, $group, $key): void
     {
         if (!in_array($group, $this->config['exclude_groups'], true)) {
-            Translation::firstOrCreate([
+            $translation = Translation::where([
                 'locale' => $this->app['config']['app.locale'],
                 'group' => $group,
                 'key' => $key,
-            ]);
+            ])->first();
+
+            if (is_null($translation)) {
+                $translation = new Translation;
+                $translation->locale = $this->app['config']['app.locale'];
+                $translation->group = $group;
+                $translation->key = $key;
+                $translation->save();
+            }
         }
     }
 
