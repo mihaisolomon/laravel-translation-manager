@@ -37,7 +37,7 @@ return [
 
     'database' => [
         'table'         => env('TRANSLATION_TABLE_NAME', 'ltm_translations'),
-        'connection'    => env('TRANSLATION_CONNECTION', 'mysql'),
+        'connection'    => env('TRANSLATION_CONNECTION', env('DB_CONNECTION', 'system')),
     ],
 
     /**
